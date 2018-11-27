@@ -63,8 +63,8 @@ functions:
     image: <docker-registry>/mongo-function
     environment:
       mongo_endpoint: localhost:27017
-      mongo_database_name: mongo_database_name
-      mongo_collection_name: mongo_collection_name
+      mongo_database_name: my_database_name
+      mongo_collection_name: my_collection_name
 ```
 
 The following environment variables can also be set if the connection between the function and mongo is slow on intial start:
