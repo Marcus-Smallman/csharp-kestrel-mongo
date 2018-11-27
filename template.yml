@@ -1,0 +1,2 @@
+language: csharp-kestrel-mongo-armhf
+fprocess: dotnet ./root.dll
