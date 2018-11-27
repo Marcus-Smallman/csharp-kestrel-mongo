@@ -1,5 +1,29 @@
 # csharp-kestrel-mongo
-This repository is for the csharp-kestrel-mongo-armhf OpenFaas function template
+This repository is for the csharp-kestrel-mongo-armhf OpenFaas function template.
+
+The function template provides 
+
+``` csharp
+    public class FunctionHandler
+    {
+        public Task<string> Handle(object input) {
+            // Inserts the input into the mongodb collection as a bson document.
+            this.GetCollection()
+                .InsertOne(input.ToBsonDocument());
+
+            // Cannot change status code in http response: https://github.com/openfaas/faas/issues/157
+            // Suggested to add status code in body response
+            var response = new ResponseModel()
+            {
+                response = input,
+                status = 201
+            };
+            
+            // Returns the response as Json.
+            return Task.FromResult(JsonConvert.SerializeObject(response));
+        }
+    }
+```
 
 To use the template the following instructions can be followed:
 
