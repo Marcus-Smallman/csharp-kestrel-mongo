@@ -1,28 +1,34 @@
 # csharp-kestrel-mongo
 This repository is for the csharp-kestrel-mongo-armhf OpenFaas function template.
 
-The function template provides 
+The function template provides the functionality to be able to communicate to a Mongo database. It will also cache the connection therefore all successive calls to Mongo after the first will not cold start. The function template also provides some useful extention methods that can be used within the function handler:
+```
+this.GetCollection(); | Gets the mongo collection typically used for CRUD operations.
+this.GetDatabase();   | Gets the mongo databased used for interfacing with the database.
+```
+
+The function handler where all the logic is done looks as follows:
 
 ``` csharp
-    public class FunctionHandler
-    {
-        public Task<string> Handle(object input) {
-            // Inserts the input into the mongodb collection as a bson document.
-            this.GetCollection()
-                .InsertOne(input.ToBsonDocument());
+public class FunctionHandler
+{
+    public Task<string> Handle(object input) {
+        // Inserts the input into the mongodb collection as a bson document.
+        this.GetCollection()
+            .InsertOne(input.ToBsonDocument());
 
-            // Cannot change status code in http response: https://github.com/openfaas/faas/issues/157
-            // Suggested to add status code in body response
-            var response = new ResponseModel()
-            {
-                response = input,
-                status = 201
-            };
-            
-            // Returns the response as Json.
-            return Task.FromResult(JsonConvert.SerializeObject(response));
-        }
+        // Cannot change status code in http response: https://github.com/openfaas/faas/issues/157
+        // Suggested to add status code in body response
+        var response = new ResponseModel()
+        {
+            response = input,
+            status = 201
+        };
+        
+        // Returns the response as Json.
+        return Task.FromResult(JsonConvert.SerializeObject(response));
     }
+}
 ```
 
 To use the template the following instructions can be followed:
