@@ -87,4 +87,5 @@ Once deployed the functions can be invoked:
 
 #### Notes
 The MongoDB driver used for this template is: **2.3.0**
-The supported architecture(s) **armhf**
+
+The supported architecture(s): **armhf**
