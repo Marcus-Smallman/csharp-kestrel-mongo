@@ -1,5 +1,5 @@
 # csharp-kestrel-mongo
-This repository is for the csharp-kestrel-mongo-armhf OpenFaas function template.
+This repository is for the csharp-kestrel-mongo OpenFaas function template.
 
 The function template provides the functionality to be able to communicate to a Mongo database. It will also cache the connection therefore all successive calls to Mongo after the first will not cold start. The function template also provides some useful extention methods that can be used within the function handler:
 ```
