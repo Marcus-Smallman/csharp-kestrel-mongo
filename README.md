@@ -37,7 +37,7 @@ To use the template the following instructions can be followed:
 
     faas-cli new mongo-function --lang csharp-kestrel-mongo
 
- The template uses the following environment variable:
+ The template uses the following environment variables:
  
 | Envrionment Variable  | Example                                    | Required |
 | --------------------- | ------------------------------------------ | -------- |
