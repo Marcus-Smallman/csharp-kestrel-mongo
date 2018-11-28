@@ -35,7 +35,7 @@ To use the template the following instructions can be followed:
 
     faas-cli template pull https://github.com/Marcus-Smallman/csharp-kestrel-mongo.git
 
-    faas-cli new mongo-function --lang csharp-kestrel-mongo-armhf
+    faas-cli new mongo-function --lang csharp-kestrel-mongo
 
  The template uses the following environment variable:
  
@@ -58,7 +58,7 @@ provider:
 
 functions:
   mongo-function:
-    lang: csharp-kestrel-mongo-armhf
+    lang: csharp-kestrel-mongo
     handler: ./mongo-function
     image: <docker-registry>/mongo-function
     environment:
@@ -88,4 +88,4 @@ Once deployed the functions can be invoked:
 #### Notes
 MongoDB driver used for this template is: **2.3.0**
 
-Supported architecture(s): **armhf**
+Supported architecture(s): **x86_64**, **armhf**
