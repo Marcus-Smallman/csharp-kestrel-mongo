@@ -85,4 +85,6 @@ Once deployed the functions can be invoked:
 "This will be added into mongo" | faas-cli invoke -f mongo-function.yml mongo-function
 ```
 
-The current MongoDB driver used for this template is: **2.3.0**
+#### Notes
+The MongoDB driver used for this template is: **2.3.0**
+The supported architecture(s) **armhf**
