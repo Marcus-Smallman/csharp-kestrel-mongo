@@ -12,7 +12,8 @@ The function handler where all the logic is done looks as follows:
 ``` csharp
 public class FunctionHandler
 {
-    public Task<string> Handle(object input) {
+    public Task<string> Handle(object input)
+    {
         // Inserts the input into the mongodb collection as a bson document.
         this.GetCollection()
             .InsertOne(input.ToBsonDocument());

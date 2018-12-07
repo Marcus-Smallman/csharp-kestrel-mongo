@@ -23,7 +23,8 @@ namespace Function
         /// Sets up the MongoDB connection.
         /// </summary>
         /// <param name="functionHandler">An instance of a function handler.</param>
-        public static void SetupConnection(this FunctionHandler functionHandler) {
+        public static void SetupConnection(this FunctionHandler functionHandler)
+        {
             if (Database == null)
             {
                 var client = new MongoClient(string.Format("mongodb://{0}", Environment.GetEnvironmentVariable("mongo_endpoint")));
