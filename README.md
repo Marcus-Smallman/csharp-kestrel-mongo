@@ -12,11 +12,11 @@ The function handler where all the logic is done looks as follows:
 ``` csharp
 public class FunctionHandler
 {
-    public Task<string> Handle(object input)
+    public async Task<string> Handle(object input)
     {
         // Inserts the input into the mongodb collection as a bson document.
-        this.GetCollection()
-            .InsertOne(input.ToBsonDocument());
+        await this.GetCollection()
+                  .InsertOneAsync(input.ToBsonDocument());
 
         // Cannot change status code in http response: https://github.com/openfaas/faas/issues/157
         // Suggested to add status code in body response
@@ -27,7 +27,7 @@ public class FunctionHandler
         };
         
         // Returns the response as Json.
-        return Task.FromResult(JsonConvert.SerializeObject(response));
+        return JsonConvert.SerializeObject(response);
     }
 }
 ```

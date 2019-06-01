@@ -21,7 +21,9 @@ RUN dotnet publish -c release -o published -r linux-arm
 ADD https://github.com/openfaas-incubator/of-watchdog/releases/download/0.4.0/of-watchdog-armhf /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog
 
-FROM microsoft/dotnet:2.0.0-runtime-stretch-arm32v7
+FROM mcr.microsoft.com/dotnet/core/runtime:2.1-stretch-slim-arm32v7
+
+RUN apt-get update && apt-get install libunwind8
 
 WORKDIR /root/
 COPY --from=builder /root/src/published .
